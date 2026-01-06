@@ -51,9 +51,9 @@ export default function LoansList() {
   };
 
   const filteredLoans = loans.filter(
-    (c) =>
-      c.name.toLowerCase().includes(search.toLowerCase()) ||
-      c.phone.includes(search)
+    (l) =>
+      l.id.toLowerCase().includes(search.toLowerCase()) ||
+      l.phone.includes(search)
   );
 
 
@@ -66,7 +66,7 @@ export default function LoansList() {
             className="btn btn-light btn-sm"
             onClick={handleCreate}
           >
-            ➕ Novo Cliente
+            ➕ Novo Empréstimo
           </button>
         </div>
 

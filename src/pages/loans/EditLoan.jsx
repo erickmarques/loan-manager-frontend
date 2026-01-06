@@ -36,7 +36,7 @@ function EditLoan() {
 
   return (
     <div className="container mt-4">
-      <h3>Editar Cliente</h3>
+      <h3>Editar Empréstimo</h3>
       <LoanForm
         initialData={Loan}
         onSubmit={handleUpdate}

@@ -1,5 +1,5 @@
-export default function LoansTable({
-  loans,
+export default function CustomersTable({
+  customers,
   loading,
   onDelete,
   onEdit,
@@ -12,7 +12,7 @@ export default function LoansTable({
     );
   }
 
-  if (!loans.length) {
+  if (!customers.length) {
     return (
       <div className="text-center py-4">
         Nenhum empréstimo encontrado
@@ -26,12 +26,11 @@ export default function LoansTable({
         <thead className="table-dark">
           <tr>
             <th style={{ width: "5%" }}>#</th>
-            <th>Cliente</th>
-            <th>Data</th>
-            <th>Valor</th>
-            <th>Data Pagamento</th>
-            <th>Valor a Pagar</th>
-            <th>Status</th>
+            <th>Nome</th>
+            <th>Empréstimos Em Aberto</th>
+            <th>Empréstimos Finalizados</th>
+            <th>Fone</th>
+            <th>Obs</th>
             <th>Criado em</th>
             <th style={{ width: "15%" }} className="text-center">
               Ações
@@ -40,22 +39,21 @@ export default function LoansTable({
         </thead>
 
         <tbody>
-          {loans.map((loan, index) => (
-            <tr key={loan.id}>
+          {customers.map((customer, index) => (
+            <tr key={customer.id}>
               <td>{index + 1}</td>
-              <td>{loan.customerName}</td>
-              <td>{new Date(loan.loanDate).toLocaleDateString("pt-BR")}</td>
-              <td>{loan.amount}</td>
-              <td>{new Date(loan.paymentDate).toLocaleDateString("pt-BR")}</td>
-              <td>{loan.totalAmountToPay}</td>
-              <td>{loan.status}</td>
+              <td>{customer.name}</td>
+              <td>{customer.quantityOpenLoans}</td>
+              <td>{customer.quantityClosedLoans}</td>
+              <td>{customer.phone}</td>
+              <td>{customer.notes}</td>
               <td>
-                {new Date(loan.createdAt).toLocaleDateString("pt-BR")}
+                {new Date(customer.createdAt).toLocaleDateString("pt-BR")}
               </td>
               <td className="text-center">
                 <button
                   className="btn btn-warning btn-sm me-2"
-                  onClick={() => onEdit(loan)}
+                  onClick={() => onEdit(customer)}
                 >
                   ✏️ Editar
                 </button>
